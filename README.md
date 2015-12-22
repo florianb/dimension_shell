@@ -1,6 +1,13 @@
 # Dimension-Shell
 
-A small (and very incomplete) ssh wrapper, to ssh your servers in the Public Cloud of dimensiodata.com immediately via their server-name.
+A small (and very incomplete) ssh wrapper, to ssh your servers in the Public Cloud of dimensiodata.com easily via their server-name:
+
+```
+florianb$ dsh connect my-host
+dsh: Server "my-host" found, opening secure shell to 33a0:47c0:110:1211:468:ac2d:62de:191f.
+root@2a00:33a0:47c0:110:1211:468:ac2d:62de:191f's password: *
+```
+
 
 ## Usage
 
