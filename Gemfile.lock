@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    configatron (4.5.0)
+    httpclient (2.7.0.1)
+    thor (0.19.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  configatron
+  httpclient
+  thor
+
+BUNDLED WITH
+   1.10.6
