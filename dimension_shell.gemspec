@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Florian Breisch"]
   s.email       = ["florian.breisch@mindkeeper.solutions"]
-  s.homepage    = "https://mindkeeper.solutions"
+  s.homepage    = "https://github.com/florianb/dimension_shell"
   s.summary     = "A tiny ssh-wrapper to address your virtual servers in the Dimenson Data Public Cloud by their name."
   #s.description = ""
   s.licenses    = ["GPL-3.0"]
