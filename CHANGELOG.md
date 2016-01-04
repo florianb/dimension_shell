@@ -1,5 +1,6 @@
 # Changelog
 
+    - Fixed Typo in README
  - 0.3.0 Added `list` command
     - Added `list` command, which lists the first 250 servers for the given region.
     - Added ssh-username to establishing connection-announcement.

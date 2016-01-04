@@ -11,7 +11,7 @@ root@2a00:33a0:47c0:110:1211:468:ac2d:62de:191f's password: *
 
 ## Usage
 
-### Connect
+### Connect to a specific server
 
 ```
 $ dsh connect SERVERNAME -r REGION -o ORGANIZATION -u USERNAME -p PASSWORD -s SHELL_USER
@@ -23,7 +23,7 @@ If a matching server is found, its primary ipv6-address is taken to open a ssh-c
 
 If the SHELL_USER is omitted, the connection will be established as `root`.
 
-### list
+### List servers for region
 
 ```
 $ dsh list -r REGION -o ORGANIZATION -u USERNAME -p PASSWORD
