@@ -29,6 +29,7 @@ module DimensionShell
       result = @cloud_control.get_server servername
       if result[:reason] then
         puts %Q(dsh: API access failed: #{result[:reason]})
+        _api_access_failed result
       elsif result['totalCount'] != 1 then
         puts %Q(dsh: No servername matched to "#{servername}".)
       else
@@ -65,6 +66,9 @@ module DimensionShell
           username:     options[:username]     || configatron.username,
           password:     options[:password]     || configatron.password
         })
+    end
+    def _api_access_failed(result)
+      _puts %Q(API access failed: #{result[:failure]})
     end
   end
 
