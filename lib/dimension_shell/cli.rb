@@ -18,7 +18,7 @@ module DimensionShell
     options default_options
     option :shell_user, type: :string, aliases: '-s'
     def connect(servername)
-      _initialize_configuration
+      _init_command(options)
       shell_user = options[:shell_user] || configatron.shell_user || 'root'
       @cloud_control = CloudControl.new({
           region:       options[:region]       || configatron.region,
@@ -53,8 +53,18 @@ module DimensionShell
       end
     end
 
-    def _initialize_configuration
+    def _init_configuration
       configatron.configure_from_hash(_load_config_hash)
+    end
+
+    def _init_command(options)
+      _init_configuration
+      @cloud_control = CloudControl.new({
+          region:       options[:region]       || configatron.region,
+          organization: options[:organization] || configatron.organization,
+          username:     options[:username]     || configatron.username,
+          password:     options[:password]     || configatron.password
+        })
     end
   end
 
