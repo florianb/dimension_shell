@@ -22,8 +22,8 @@ module DimensionShell
       shell_user = options[:shell_user] || configatron.shell_user || 'root'
 
       result = @cloud_control.get_server servername
-      if result[:reason] then
-        puts %Q(dsh: API access failed: #{result[:reason]})
+
+      if result[:failure] then
         _api_access_failed result
       elsif result['totalCount'] != 1 then
         _puts %Q(No servername matched to "#{servername}".)
