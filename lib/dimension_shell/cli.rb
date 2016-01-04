@@ -20,12 +20,7 @@ module DimensionShell
     def connect(servername)
       _init_command(options)
       shell_user = options[:shell_user] || configatron.shell_user || 'root'
-      @cloud_control = CloudControl.new({
-          region:       options[:region]       || configatron.region,
-          organization: options[:organization] || configatron.organization,
-          username:     options[:username]     || configatron.username,
-          password:     options[:password]     || configatron.password
-        })
+
       result = @cloud_control.get_server servername
       if result[:reason] then
         puts %Q(dsh: API access failed: #{result[:reason]})
