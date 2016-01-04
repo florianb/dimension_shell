@@ -35,7 +35,23 @@ module DimensionShell
       end
     end
 
+    desc 'list', 'lists all server available in the given region'
     options default_options
+    def list
+      _init_command(options)
+
+      result = @cloud_control.get_server_list
+
+      if result[:failure] then
+        _api_access_failed result
+      else
+        result['server'].each { |server|
+          puts "#{server['name']} (#{server['operatingSystem']['displayName']}) - #{server['state']}"
+        }
+        puts %Q(#{result['totalCount']} server/s in total.)
+      end
+    end
+
   private
     def _get_config_path
       File.join(Dir.home, 'dsh.yml')
