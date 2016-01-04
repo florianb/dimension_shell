@@ -12,12 +12,8 @@ module DimensionShell
     end
 
     def get_server(servername)
-      response = _invoke_get path: 'server/server', query: { name: servername }
-      if response.ok? then
-        JSON.parse(response.body)
-      else
-        { reason: "#{response.status.to_s} - #{response.reason.to_s}" }
-      end
+      _invoke_get path: 'server/server', query: { name: servername }
+    end
     end
 
   private
@@ -46,7 +42,13 @@ module DimensionShell
       client = HTTPClient.new(default_header: header, force_basic_auth: true)
       client.set_auth _api_base_uri, @username, @password
       #puts "Fetching url \"#{_api_domain(options[:path])}\""
-      client.get(_api_domain(options[:path]), :query => options[:query])
+      response = client.get(_api_domain(options[:path]), :query => options[:query])
+
+      if response.ok? then
+        JSON.parse(response.body)
+      else
+        { failure: "#{response.status.to_s} - #{response.reason.to_s}" }
+      end
     end
   end
 end
