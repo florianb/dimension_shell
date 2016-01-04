@@ -14,6 +14,9 @@ module DimensionShell
     def get_server(servername)
       _invoke_get path: 'server/server', query: { name: servername }
     end
+
+    def get_server_list
+      _invoke_get path: 'server/server'
     end
 
   private
