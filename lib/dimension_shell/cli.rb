@@ -30,7 +30,7 @@ module DimensionShell
       else
         server = result['server'].first
         primary_ipv6 = server['networkInfo']['primaryNic']['ipv6']
-        puts "dsh: Server \"#{servername}\" found, opening secure shell to #{primary_ipv6}."
+        puts "Server \"#{servername}\" found, opening secure shell to #{shell_user}@#{primary_ipv6}."
         Kernel.exec("ssh #{shell_user}@#{primary_ipv6}")
       end
     end
