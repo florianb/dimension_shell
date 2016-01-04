@@ -31,7 +31,7 @@ module DimensionShell
         puts %Q(dsh: API access failed: #{result[:reason]})
         _api_access_failed result
       elsif result['totalCount'] != 1 then
-        puts %Q(dsh: No servername matched to "#{servername}".)
+        _puts %Q(No servername matched to "#{servername}".)
       else
         server = result['server'].first
         primary_ipv6 = server['networkInfo']['primaryNic']['ipv6']
@@ -67,6 +67,11 @@ module DimensionShell
           password:     options[:password]     || configatron.password
         })
     end
+
+    def _puts(*args)
+      puts args.unshift('dsh: ').join()
+    end
+
     def _api_access_failed(result)
       _puts %Q(API access failed: #{result[:failure]})
     end
