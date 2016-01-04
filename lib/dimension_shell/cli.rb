@@ -7,13 +7,16 @@ require 'dimension_shell/cloud_control'
 
 module DimensionShell
   class Cli < Thor
+    default_options = {
+      %w(region -r) => :string,
+      %w(organization -o) => :string,
+      %w(username -u) => :string,
+      %w(password -p) => :string,
+    }
 
-    desc 'connect SERVERNAME', 'really connects to the server called SERVERNAME'
-    option :region,       type: :string,  aliases: :r
-    option :organization, type: :string,  aliases: :o
-    option :username,     type: :string,  aliases: :u
-    option :password,     type: :string,  aliases: :p
-    option :shell_user,   type: :string,  aliases: :s
+    desc 'connect SERVERNAME', 'connects to the server called SERVERNAME'
+    options default_options
+    option :shell_user, type: :string, aliases: '-s'
     def connect(servername)
       _initialize_configuration
       shell_user = options[:shell_user] || configatron.shell_user || 'root'
@@ -36,6 +39,7 @@ module DimensionShell
       end
     end
 
+    options default_options
   private
     def _get_config_path
       File.join(Dir.home, 'dsh.yml')
