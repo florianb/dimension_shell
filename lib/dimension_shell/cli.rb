@@ -46,7 +46,9 @@ module DimensionShell
         _api_access_failed result
       else
         result['server'].each { |server|
-          puts "#{server['name']} (#{server['operatingSystem']['displayName']}) - #{server['state']}"
+          primary_ipv6 = server['networkInfo']['primaryNic']['ipv6']
+
+          puts "#{server['name']} (#{server['operatingSystem']['displayName']}) - #{server['state']}\tipv6: #{primary_ipv6}"
         }
         puts %Q(#{result['totalCount']} server/s in total.)
       end
