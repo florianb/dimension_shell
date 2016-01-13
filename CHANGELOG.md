@@ -1,5 +1,6 @@
 # Changelog
 
+ - 0.4.0 Added primary-ipv6 address to the output of the `list` command
     - Fixed Typo in README
  - 0.3.0 Added `list` command
     - Added `list` command, which lists the first 250 servers for the given region.

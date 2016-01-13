@@ -31,10 +31,10 @@ $ dsh list -r REGION -o ORGANIZATION -u USERNAME -p PASSWORD
 
 Connects to the DimensionData-API at the specified Region with the ORGANIZATION-id, USERNAME and PASSWORD to fetch a list of all servers at the given region.
 
-If the API-call is successful the returned servernames will be printed, followed by their operating system and their current state:
+If the API-call is successful the returned servernames will be printed, followed by their operating system, their current state and their primary ipv6-address:
 
 ``
-super-server (UBUNTU12/64) - NORMAL
+super-server (UBUNTU12/64) - NORMAL   ipv6: 1234:1234:123:1234:1234:1234:123:1234
 1 server/s in total.
 ``
 
