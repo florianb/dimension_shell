@@ -14,10 +14,10 @@ module DimensionShell
       %w(password -p) => :string,
     }
 
-    desc 'connect SERVERNAME', 'connects to the server called SERVERNAME'
+    desc 'connect SERVERNAME SSH-OPTIONS', 'connects to the server called SERVERNAME'
     options default_options
     option :shell_user, type: :string, aliases: '-s'
-    def connect(servername)
+    def connect(servername, *ssh_options)
       _init_command(options)
       shell_user = options[:shell_user] || configatron.shell_user || 'root'
 
@@ -31,7 +31,10 @@ module DimensionShell
         server = result['server'].first
         primary_ipv6 = server['networkInfo']['primaryNic']['ipv6']
         puts "Server \"#{servername}\" found, opening secure shell to #{shell_user}@#{primary_ipv6}."
-        Kernel.exec("ssh #{shell_user}@#{primary_ipv6}")
+        call = "ssh #{shell_user}@#{primary_ipv6}"
+        call += " " + ssh_options.join(" ") if ssh_options.any?
+        puts call
+        Kernel.exec(call)
       end
     end
 
