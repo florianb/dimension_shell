@@ -14,7 +14,7 @@ root@2a00:33a0:47c0:110:1211:468:ac2d:62de:191f's password: *
 ### Connect to a specific server
 
 ```
-$ dsh connect SERVERNAME -r REGION -o ORGANIZATION -u USERNAME -p PASSWORD -s SHELL_USER
+$ dsh connect SERVERNAME -r REGION -o ORGANIZATION -u USERNAME -p PASSWORD -s SHELL_USER SSH-OPTIONS
 ```
 
 Connects to the DimensionData-API at the specified REGION with the ORGANIZATION-id, USERNAME and PASSWORD to fetch all servers matching to SERVERNAME.
@@ -22,6 +22,15 @@ Connects to the DimensionData-API at the specified REGION with the ORGANIZATION-
 If a matching server is found, its primary ipv6-address is taken to open a ssh-connection with the provided SHELL_USER.
 
 If the SHELL_USER is omitted, the connection will be established as `root`.
+
+Additional options for the ssh-client may be defined by appending them to the `dsh`-command:
+
+```
+  $ dsh connect my-server -s root -v
+```
+
+The example above passes the verbose-option (`-v`) to ssh.
+
 
 ### List servers for region
 

@@ -1,5 +1,6 @@
 # Changelog
 
+ - 0.5.0 Added ssh-options to the `connect` command
  - 0.4.0 Added primary-ipv6 address to the output of the `list` command
     - Fixed Typo in README
  - 0.3.0 Added `list` command
